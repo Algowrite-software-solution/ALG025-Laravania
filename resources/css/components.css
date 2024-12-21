@@ -1,0 +1,86 @@
+@import "./main.css";
+
+@import "./components/header.css";
+@import "./components/datatables.css";
+@import "./components/imagePicker.css";
+@import "./components/product-card.css";
+
+.new-arrival {
+    position: relative;
+    transform: rotate(-45deg) translateZ(0px);
+    right: 40px;
+    top: 25px;
+    width: 150px;
+    font-size: var(--font-size-8);
+}
+
+
+.modal-header,
+.modal-footer {
+  border-bottom: none; /* Removes the border under the header */
+  border-top: none;    /* Removes the border above the footer */
+}
+
+/* confirm modal css */
+.lrv-popup-confirm{
+    background-color: #4E5964;
+    width: 80%;
+    height: 200px;
+}
+.lrv-popup-body{
+    /* width: 300px; */
+}
+.lrv-popup-button{
+    width: 100px;
+    height: 30px;
+}
+.lrv-popup-button:hover{
+    background-color: #2096fd;
+    scale: 1.02;
+    
+}
+.lrv-popup-button:active{
+    transform: translateY(1px);
+     
+ }
+ /* quantity modal css */
+ .lrv-quantity{
+    background-color: #4E5964;
+    width: 80%;
+    height: 250px;
+ }
+ .lrv-quantity-input{
+    width: 50px;
+    height: 40px;
+ }
+ .lrv-quantity-selector{
+    width: 140px;
+    height: 40px;
+ }
+ .lrv-quantity-button{
+    width: 120px;
+    height: 40px;
+    background-color: var(--primary);
+ }
+ .lrv-quantity-button:hover{
+    background-color: #2096fd;
+    scale: 1.02;   
+}
+.lrv-quantity-button:active{
+    transform: translateY(2px);
+ }
+ /* screen sizes */
+ @media (min-width: 576px) {
+    .new-arrival {
+        right: 45px;
+        top: 35px;
+        width: auto;
+        font-size: var(--font-size-7);
+    }
+}
+
+ @media only screen and (max-width: 400px) {
+    .lrv-popup-confirm{
+        width: 100%;
+    }
+ }

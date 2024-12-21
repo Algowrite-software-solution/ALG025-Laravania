@@ -1,0 +1,9 @@
+/* custom CSS */
+@import url(components.css);
+
+/* section1 - hero section  */
+.hp-s1 {
+    min-height: 85vh;
+    background-color: var(--primary-900);
+    overflow: hidden !important;
+}

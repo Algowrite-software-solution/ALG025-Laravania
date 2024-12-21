@@ -1,0 +1,87 @@
+.lrv-admin-inventory-panel-div-border-text {
+    position: absolute;
+    top: -13px;
+    left: 20px;
+    padding: 0 5px;
+}
+
+.lrv-admin-inventory-panel-inputs::placeholder {
+    opacity: 1;
+}
+
+.lrv-admin-inventory-panel-inputs-special-1 {
+    text-align: center !important;
+}
+
+.lrv-admin-inventory-panel-inputs-special-2::placeholder {
+    color: var(--primary-white) !important;
+}
+
+.lrv-admin-inventory-panel-selects {
+    padding: 0.375rem 1.5rem;
+}
+
+.lrv-admin-inventory-panel-plus-div {
+    position: absolute;
+    top: -25px;
+    right: 30px;
+}
+
+.lrv-admin-inventory-panel-image-1 {
+    height: 22px;
+    width: 22px;
+}
+
+.lrv-admin-inventory-panel-textarea {
+    height: 100px;
+}
+
+.lrv-admin-inventory-panel-qty-down-input {
+    margin-top: 18px;
+    margin-left: -28px;
+}
+
+.lrv-admin-inventory-panel-qty-up-input {
+    margin-top: -5px;
+    margin-left: -28px;
+}
+
+.lrv-admin-inventory-panel-amout-p {
+    color: #E8FF52;
+}
+
+.lrv-admin-inventory-panel-border-1 {
+    border-bottom: var(--primary-white) dashed !important;
+    border-top: var(--primary-white) dashed !important;
+}
+
+.lrv-admin-inventory-panel-border-2 {
+    border-top: var(--primary-white) dashed !important;
+}
+
+.lrv-admin-inventory-panel-span-color-1 {
+    color: #FF6105;
+}
+
+.lrv-admin-inventory-panel-textarea-2::placeholder {
+    text-align: center;
+    transform: translateY(50%);
+    display: inline-block;
+    top: -50%;
+    opacity: 1;
+}
+
+.lrv-admin-inventory-panel-text-1 {
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);
+}
+
+.lrv-admin-inventory-panel-bg-color-1 {
+    background-color: #767676 !important;
+}
+
+@media only screen and (max-width: 350px) {
+    .lrv-admin-inventory-panel-text-2 {
+        font-size: 0.8rem !important;
+    }
+}
