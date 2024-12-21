@@ -5,11 +5,19 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                "resources/lib/lightbox/css/lightbox.min.css",
-                "resources/lib/owlcarousel/assets/owl.carousel.min.css",
                 "resources/css/bootstrap.min.css",
+
                 "resources/css/app.css",
                 "resources/css/main.css",
+                "resources/css/theme/core/variables.css",
+                "resources/css/theme/core/utility.css",
+                "resources/css/theme/core/colors-background.css",
+                "resources/css/theme/core/colors-text.css",
+                "resources/css/theme/core/typography.css",
+                "resources/css/theme/core/borders.css",
+                "resources/css/theme/components/micro/buttons.css",
+                "resources/css/theme/components/micro/inputs.css",
+
                 "resources/css/header.css",
                 "resources/css/footer.css",
                 "resources/css/404.css",
@@ -19,7 +27,6 @@ export default defineConfig({
                 "resources/css/home.css",
                 "resources/css/about.css",
                 "resources/css/contact.css",
-                "resources/css/account.css",
                 "resources/css/admin_panel.css",
                 "resources/css/admin_login.css",
 
@@ -29,8 +36,6 @@ export default defineConfig({
                 "resources/js/pages/client/contact.js",
                 "resources/js/pages/client/signin.js",
                 "resources/js/pages/client/signup.js",
-                "resources/js/pages/client/account.js",
-                "resources/js/pages/client/forgot-password.js",
                 "resources/js/pages/admin/admin_panel.js",
                 "resources/js/pages/admin/admin_login.js",
             ],

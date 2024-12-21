@@ -1,9 +1,11 @@
 <?php
 
-use App\Action\ResponseProtocol;
-use App\Http\Controllers\CityController;
-use App\Models\City;
-use Illuminate\Http\Client\Response;
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,6 +24,12 @@ Route::get('/comp/panel/{name}', function (string $name) {
     }
 });
 
+
+// routes:utility 🔧
+//
+// ==========================================
+
+
 // ============= 🔓 CLIENT ROUTES 🔓 ===============
 //
 //
@@ -36,16 +44,21 @@ Route::get('/home', function () {
     return view('pages.client.home');
 })->name("client-home");
 
+Route::get('/menu', function () {
+    return view('pages.client.menu');
+});
+
+Route::get('/events', function () {
+    return view('pages.client.events');
+});
+
 Route::get('/about', function () {
     return view('pages.client.about');
 });
 
+
 Route::get('/contact', function () {
     return view('pages.client.contact');
-});
-
-Route::get('/daham', function () {
-    return view('pages.client.daham.daham');
 });
 
 
@@ -76,51 +89,52 @@ Route::get('/account', function () {
 Route::get('/forgot-password', function () {
     return view('pages.client.forgot-password');
 });
-
-//
 // ==========================================
 
 
 // ============= 🔒 ADMIN ROUTES 🔒 ===============
-//
-//
-
-// routes:pages [admin]
+// routes:pages [Admin]
+// site pages 📜
 Route::get('/admin/login', function () {
     return view('pages.admin.login');
-})->name("admin-login");
+})->name('admin.login');
 
-Route::get('/admin/employee/login', function () {
-    return view('pages.admin.employee_login');
-})->name("employee-login");
-
-
-// routes:admin
-// Secure the actual admin route
-// Route::middleware([AdminSessionAuthentication::class])->group(function () {
+//protected routes
+Route::middleware('admin.auth')->group(function () {
+    // admin dashboard
     Route::get('/admin', function () {
         return view('pages.admin.home');
-    })->name('admin');
+    })->name('admin.home');
+});
 
-    // Name the route for better usage and redirection
-    Route::get('/staff', function () {
-        return view('pages.admin.home');
-    })->name('staff');  // Name the route for better usage and redirection
-// });
+// ============= 👨‍🔧 WEB API ROUTES 👨‍🔧 ===============
+
+//routes:admin [Admin]
+// admin auth route ⚙️
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
+
+//protected routes for admin
+Route::middleware('admin.auth')->prefix('admin')->group(function () {
+    Route::post('/logout', [AdminAuthController::class, 'logout']);
+    Route::post('/register', [AdminController::class, 'register']);
+    Route::put('/update', [AdminController::class, 'update']);
+    Route::delete('/delete', [AdminController::class, 'destroy']);
+    Route::get('/list', [AdminController::class, 'index']);
+    Route::get('/profile', [AdminController::class, 'show']);
+});
 
 // ==========================================
 
 
 
-// ============= 🧪 BACKEND ROUTES 🧪 ===============
 
-//create city route group
-Route::group(['prefix' => 'city'], function () {
-    Route::get('/', [CityController::class, 'index']);
-    Route::post('/add', [CityController::class, 'store']);
 
-    Route::post('/update', [CityController::class, 'update']);
-    Route::post('/delete', [CityController::class, 'destroy']);
-});
 
+
+
+// ============= 🧪 TEST ROUTES 🧪 ===============
+//session test
+Route::get('/admin/session', [AdminAuthController::class, 'sessionRetrieve']);
+
+//
 // ==========================================

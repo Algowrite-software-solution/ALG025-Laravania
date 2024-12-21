@@ -133,6 +133,46 @@ export default class Filter {
         }
         return element;
     }
+
+    // to data from data like this : 2025-08-26 22:47:32
+    toDate() {
+        return new Date(this.data).toLocaleDateString();
+    }
+
+    // to time from data like this : 2025-08-26 22:47:32
+    toTime() {
+        return new Date(this.data).toLocaleTimeString();
+    }
+
+    // create image
+    toImg(image, classes = "", alt = "image") {
+        return `<img src="${image}?${new Date().getTime()}" alt="${alt}" class="${classes}" />`;
+    }
+
+    // name formatter
+    nameFormatter(string, format = "") {
+        if (format === "firstLetter") {
+            return string
+                .split(" ")
+                .map(
+                    (word) =>
+                        word.charAt(0).toUpperCase() +
+                        word.slice(1).toLowerCase()
+                )
+                .join(" ");
+        } else if (format === "pascal_underscore") {
+            return string
+                .split("_")
+                .map(
+                    (word) =>
+                        word.charAt(0).toUpperCase() +
+                        word.slice(1).toLowerCase()
+                )
+                .join(" ");
+        } else {
+            return string;
+        }
+    }
 }
 
 // console.log(

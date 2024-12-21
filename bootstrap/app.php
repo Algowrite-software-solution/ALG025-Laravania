@@ -21,7 +21,30 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'abilities' => CheckAbilities::class,
             'ability' => CheckForAnyAbility::class,
+            'admin.auth' => \App\Http\Middleware\AdminAuth::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            '/admin/login',
+            '/admin/logout',
+            '/admin/register',
+            'admin/update',
+            'admin/delete',
+            'admin/event/store',
+            'admin/event/update',
+            'admin/event/delete',
+            '/ticket/create',
+            '/ticket/update',
+            '/ticket/delete',
+            'admin/menu/create',
+            'admin/menu/update',
+            'admin/menu/delete',
+            'admin/menu/status',
+            'admin/category/create',
+            'admin/category/update',
+            'admin/category/delete',
+        ]);
+
         // $middleware->web([
         // \Illuminate\Session\Middleware\StartSession::class,
         // ]);

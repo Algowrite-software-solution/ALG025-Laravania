@@ -1,132 +1,77 @@
 /*
     admin login css
 */
-/* circle container */
-
-.lrv-admin-login-container {
+.img-div {
     width: 100%;
     height: 100vh;
-    border-radius: 0 0 300px 300px;
-    background-image: var(--grediant-main);
-  }
-  
-/* .lrv-admin-login{
-    width: 400px;
-    height: 470px;
-    background-color: rgba(0, 0, 0, 0.9);
-} */
-.lrv-admin-login {
-    width: 400px;
-    height: 470px;
-    background-color: rgba(73, 78, 83, 0.6); /* Dark grayish-blue with 30% opacity */
-}
-
-
-
-
-.lrv-admin-login-section {
-    position: relative;
-    height: 100vh;
-    background-image: var(--grediant-secondary);
-  }
-  
-.lrv-admin-login-logo{
-    width: 100%;
-    height: 160px;
-    aspect-ratio: 1/1;
-    background-size: contain;
+    background-image: url("/storage/app/public/images/Admin/login-background.jpg");
+    background-blend-mode: lighten;
+    background-color: rgba(red, green, blue, alpha);
     background-repeat: no-repeat;
-    background-position: center;
-    background-image: url("../images/admin/logo\ psd\ RG\ 2.png");
-}
-.lrv-admin-login-input{
-    width: 75%;
-}
-.lrv-admin-login-input-tick{
-    width: 75%;
-}
-.lrv-admin-login-label{
-    width: 40px;
-    background-color: white;
-    border-radius: 20px 10px 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-}
-.lrv-admin-login-input-field{
-    border-radius: 20px 20px 20px 20px;
-    border: none;
-}
-.lrv-admin-login-label-first{
-    margin-top: -20px;
-}
-.lrv-admin-login-email{
-    margin-left: 10px;
-    width: 29px;
-    height: 18px;
-    aspect-ratio: 1/1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
-    background-image: url("../images/login/email2.webp");
 }
-.lrv-admin-login-pass{
-    width: 20px;
-    height: 18px;
-    margin-left: 10px;
-    background-size: cover;
-    background-image: url("../images/login/pass.webp");
-}
-.lrv-admin-login-input-field::placeholder {
-    font-size: 13px; /* Adjust as needed */
-    color: gray; /* Optional: Change placeholder color */
-}
-.lrv-login-btn{
-    height: 35px;
-    background-color: var(--primary);
-}
-.lrv-login-btn:hover{
-    background-color: #2096fd;
-    scale: 1.01;
-    
-}
-.lrv-login-btn:active{
-   transform: translateY(1px);
-    
-}
-@media only screen and (max-width: 1024px) {
-    .lrv-admin-login-container {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        border-radius: 0 0 150px 150px;
-        background-image: var(--grediant-main);
-        overflow: hidden; /* Prevent pseudo-element overflow */
-      }
 
+.item-rounded {
+    border-radius: 25px;
 }
-@media only screen and (max-width: 650px) {
-    .lrv-admin-login-container {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        border-radius: 0 0 100px 100px;
-        background-image: var(--grediant-main);
-        overflow: hidden; /* Prevent pseudo-element overflow */
-      }
+
+.sub-text{
+    font-size: 14px;
+  }
+
+input::-webkit-input-placeholder {
+    font-size: 14px;
+    line-height: 4;
 }
-@media only screen and (max-width: 450px) {
-    .lrv-admin-login{
-        width: 300px;
-        height: 450px;
-    }
-    .lrv-admin-login-input-tick{
-        width: max-content;
-    }
-    .lrv-admin-login-input-field::placeholder {
-        font-size: 12px; /* Adjust as needed */
-        color: gray; /* Optional: Change placeholder color */
-    }
+
+.role-selector {
+    font-size: 14px;
+}
+
+.main-title {
+    font-size: 51px;
+}
+
+.branding-1 {
+    font-size: 10px;
+}
+
+.branding-2 {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.check-box {
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: #fff8f0;
+}
+
+
+input[type="checkbox"]:enabled:checked {
+    background-color: gray !important;
+    color: rgb(0, 0, 0);
+}
+
+
+input::-webkit-input-placeholder {
+    font-size: 14px;
+    line-height: 4;
+}
+
+.checkbox-label:hover {
+    cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #fff8f0 inset !important;
 }

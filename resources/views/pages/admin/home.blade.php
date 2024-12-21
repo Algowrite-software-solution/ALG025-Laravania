@@ -8,83 +8,31 @@
     @vite('resources/js/pages/admin/admin_panel.js')
 @endsection
 
-
-
 {{-- admin main container ID - adminPanelMainContainer --}}
 @section('content')
-    <section class="vh-100 bg-dark">
-        <div class="container-fluid h-100 d-flex p-0 p-lg-1">
-            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-8 px-2 py-3 h-100 pt-1  flex-column admin-sidebar"
-                id="adminSidebar">
-
-                <div class="d-flex justify-content-end d-lg-none ">
-                    <i class="fa-regular fa-rectangle-xmark lrv-text-light lrv-admin-close fa-lg" onclick="sidebar(false)"></i>
-                </div>
-
-                <div class="rounded-3 shadow-sm">
-                    <div class="d-flex justify-content-center gap-3 py-2 pt-0 mt-0 lrv-logo-box">
-                        <div
-                            class="lrv-admin-logo-container d-flex lrv-bg-primary-100 lrv-rounded-2 flex-row align-content-center justify-content-center">
-                            <div class="logo-img"></div>
+    <section class="vh-100 lrv-bg-secondary-700">
+        <div class="container-fluid">
+            <div class="row ">
+                <!-- header -->
+                <nav class="navbar lrv-bg-secondary-800 lrv-shadow-s header fixed-toprounded-0">
+                    <div class="container-fluid">
+                        <a class="navbar-brand d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+                            aria-controls="staticBackdrop"><i class="fa-solid fa-align-justify lrv-fs-6"></i></a>
+                        <div class="d-flex gap-3 p-2" style="height: 60px;">
+                            <div class="logo-div d-flex flex-row align-items-center">
+                                <h1 class="lrv-text-light lrv-fw-medium">Laravania</h1>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div
-                    class="lrv-bg p-3 flex-grow-1 d-flex flex-column justify-content-between align-content-center align-items-center rounded-4">
-                    <div class=" p-0 mt-5 d-flex flex-column gap-3">
-                        <button data-adminPanel="dashboard" data-admin-panel-switch="dashboard"
-                            class="nav-link d-flex lrv-text-light lrv-fs-6 lrv-fw-normal text-start">
-                            <div class="lrv-admin-dashboard">
-                            </div><span class="ps-3">Dashboard</span>
-                        </button>
-
-                        <button data-admin-panel-switch="orders" data-adminPanel="orders"
-                            class="nav-link d-flex lrv-text-light lrv-fs-6 lrv-fw-normal text-start">
-                            <div class="lrv-admin-job"></div>
-                            <span class="ps-3">Job Cards</span>
-                        </button>
-
-                        <button data-admin-panel-switch="manage-ui" data-adminPanel="manage-ui"
-                            class="nav-link d-flex lrv-text-light lrv-fs-6 lrv-fw-normal text-start">
-                            <div class="lrv-admin-bills"></div> <span class="ps-3 lrv-admin-sidebar-bills">Bills</span>
-                        </button>
-
-                        <button data-admin-panel-switch="users" data-adminPanel="users"
-                            class="nav-link d-flex lrv-text-light lrv-fs-6 lrv-fw-normal text-start">
-                            <div class="lrv-admin-suppliers"></div> <span class="ps-3">Suppliers</span>
-                        </button>
-
-                        <button data-admin-panel-switch="staff" data-adminPanel="staff"
-                            class="nav-link d-flex lrv-text-light lrv-fs-6 lrv-fw-normal text-start">
-                            <div class="lrv-admin-employee"></div><span class="ps-3">Employees</span>
-                        </button>
-
-                        <button data-admin-panel-switch="seo" data-adminPanel="seo"
-                            class="nav-link d-flex lrv-text-light lrv-fs-6 lrv-fw-normal text-start">
-                            <div class="lrv-admin-inventory"></div> <span class="ps-3">Inventory</span>
-                        </button>
-                    </div>
-                    <div class="lrv-alg-logo "></div>
-                </div>
-            </div>
-            <div class="col-xl-10 col-lg-9 col-12 d-flex flex-column">
-                <div class="lrv-admin-header">
-                    <div class="d-flex justify-content-between align-items-center pt-3 px-3">
-                        <a class="navbar-brand d-block d-lg-none"><i class="fa-solid fa-align-justify lrv-text-primary lrv-fs-6"
-                                onclick="sidebar(true)"></i></a>
-
-                        <div class="lrv-text-light lrv-admin-topic">Dashboard</div>
-
                         <div class="d-flex align-items-center">
                             <div class="notification-container">
                                 <button id="notification-button"
-                                    class="lrv-btn lrv-btn-unstyled lrv-text-light notification-button"><i
+                                    class="lrv-btn lrv-btn-unstyled lrv-text-dark notification-button"><i
                                         class="fa-solid fa-bell notification-button"></i></button>
                                 <div id="notification-dropdown" class="notification-dropdown">
                                     <ul id="notification-list">
                                         <li class="d-inline-flex w-100 align-items-center">
                                             <div class="col-2 text-center">
-                                                <img src="{{ asset('/storage/images/admin/user_img.png') }}" alt=""
+                                                <img src="{{ asset('/storage/images/Admin/user_img.png') }}" alt=""
                                                     class="notification-img">
                                             </div>
                                             <div class="col-9">
@@ -96,30 +44,99 @@
                                                 </div>
                                             </div>
                                             <div class="col-1 text-center">
-                                                <button class="lrv-btn lrv-btn-unstyled lrv-text-red-600 ">
-                                                    <i class="fa-solid text-light fa-trash"></i>
+                                                <button class="lrv-btn lrv-btn-unstyled lrv-text-red-600">
+                                                    <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <img src="{{ asset('resources/images/admin/user_img.png') }}" alt="admin user image"
-                                class="admin-image lrv-rounded-circle  p-1 ">
-                            <div
-                                class="d-flex flex-column lrv-nav-drop-box py-1  d-flex justify-content-center align-items-center lrv-rounded-1">
-                                <i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i>
+                            <img src="{{ asset('/storage/images/Admin/user_img.png') }}" alt="admin user image"
+                                class="admin-image lrv-rounded-circle  p-1">
+                            <div class="d-flex flex-column py-1" id="adminProfile">
+                                <h3 class="lrv-fs-7 lrv-fw-bold lrv-font-poppins">
+                                    <span data-field="admin_details.first_name"></span>
+                                    <span data-field="admin_details.last_name"></span>
+                                </h3>
+                                <label class="lrv-fs-8 lrv-fw-semibold lrv-font-poppins" data-field="admin_details.role"
+                                    data-filter="nameFormatter:pascal_underscore">...</label>
                             </div>
                         </div>
                     </div>
-                    <hr class="text-white">
+                </nav>
+
+                <!-- sidebar -->
+                <div class="sidebar col-2 d-none d-xl-block m-0 p-0 pt-5 lrv-bg-secondary-500 lrv-shadow-l"
+                    id="desktopSidePanelContainer">
+                    <div class="nav flex-column nav-pills p-0" role="tablist" aria-orientation="vertical"
+                        id="adminPanelSideBar">
+                        <div class="scroll-sidebar p-0 mt-5 d-flex flex-column gap-2">
+                            <button data-admin-panel-switch="menu" data-adminPanel="menu"
+                                class="nav-link lrv-text-light lrv-fs-7 lrv-fw-normal text-start"><i
+                                    class="fa-solid fa-pen-ruler"></i> <span class="ps-3">Menu</span></button>
+                            <button data-admin-panel-switch="events" data-adminPanel="events"
+                                class="nav-link lrv-text-light lrv-fs-7 lrv-fw-normal text-start"><i
+                                    class="fa-solid fa-user"></i> <span class="ps-3">Events</span></button>
+                        </div>
+
+                        <hr>
+
+                        <div class="bottom-sidebar fixed-bottom d-grid text-start p-0 pb-1 gap-2">
+                            <button class="lrv-btn lrv-text-light lrv-fs-7 lrv-fw-normal text-start" role="button"
+                                data-bs-toggle="modal" data-bs-target="#logoutModal"><i
+                                    class="fa-solid fa-right-from-bracket"></i><span class="ps-3">Log
+                                    out</span></button>
+                            <button data-admin-panel-switch="test" data-adminPanel="test"
+                                class="nav-link lrv-text-light lrv-fs-7 lrv-fw-normal text-start"><i
+                                    class='fa-solid fa-gear'></i>
+                                <span class="ps-3">Test</span></button>
+                        </div>
+                    </div>
                 </div>
-                {{-- content --}}
-                <div class="lrv-admin-container p-3">
-                    <div class="overflow-auto h-100" id="adminPanelMainContainer">
+
+                <div class="col-12 col-xl-10 offset-xl-2 p-0 mt-5 pt-5 lrv-bg-secondary-200">
+                    <div class="tab-content p-3" id="adminPanelMainContainer">
+                        <!-- content -->
+                    </div>
+                </div>
+
+                <!-- offcanvas -->
+                <div class="offcanvas offcanvas-start" data-bs-backdrop="offcanvas" tabindex="-1" id="staticBackdrop"
+                    aria-labelledby="staticBackdropLabel">
+                    <div class="offcanvas-header justify-content-end pt-4">
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                            id="sideBarCloseBtn"></button>
+                    </div>
+                    <div class="offcanvas-body sidebar-sm p-0" id="mobileSidePanelContainer">
+                        <!-- side panel will load here -->
 
                     </div>
                 </div>
+
+                <!-- logout modal -->
+                <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content lrv-bg-primary-100">
+                            <div class="modal-header border border-0 d-flex justify-content-end">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex flex-column justify-content-center align-items-center px-5">
+                                <div class="d-flex flex-row w-100 justify-content-center align-items-center">
+                                    <p class=" lrv-fs-6">Do you want to <span class=" lrv-fw-bold">Log Out</span> ?</p>
+                                </div>
+                                <div class="d-flex flex-row w-100 p-3 justify-content-between">
+                                    <button class="lrv-btn-primary lrv-bg-red-600 col-5 lrv-rounded-pill"
+                                        onclick="adminLogOut();">Log Out</button>
+                                    <button class="lrv-btn-primary col-5 lrv-rounded-pill"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

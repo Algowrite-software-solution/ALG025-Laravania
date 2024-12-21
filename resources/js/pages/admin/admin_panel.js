@@ -1,33 +1,18 @@
 import Admin from "../../Admin";
+import AdminPageManager from "../../UI/AdminPageManager";
 
 let ADMIN = null;
+let adminPageManager = null;
 document.addEventListener("DOMContentLoaded", () => {
     console.log("admin panel loaded");
     ADMIN = new Admin();
-
-    // default listners
-    resizeListner();
+     new AdminPageManager("admin-dashboard");
 });
 
-// custom functions
-// sidebar
-const sidebar = (open = false) => {
-    const adminSidebar = document.getElementById("adminSidebar");
-    if (open) {
-        adminSidebar.style.display = "flex";
-    } else {
-        adminSidebar.style.display = "none";
-    }
+// function to log out the admin
+const adminLogOut = () => {
+    AdminPageManager.logout();
 };
 
-const resizeListner = () => {
-    window.addEventListener("resize", () => {
-        const adminSidebar = document.getElementById("adminSidebar");
-        if (window.innerWidth > 992) {
-            adminSidebar.style.display = "flex"; // Show sidebar for larger screens
-        }
-    });
-};
-
-// add to window
-window.sidebar = sidebar;
+// expose the function to the global scope
+window.adminLogOut = adminLogOut;

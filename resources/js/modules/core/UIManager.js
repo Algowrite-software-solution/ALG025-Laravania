@@ -1,5 +1,6 @@
 import Core from "../../Core";
 import Filter from "../optional/dataFilter/Filter";
+import { ImageInputManager } from "../optional/ImageInputManager";
 
 /**
  * UIManager
@@ -260,19 +261,80 @@ export default class UIManager {
         console.log(this.#imageInputManagers);
     }
 
-    // load tempalte component
-    loadFromTempalte(name) {
-        const cardTemplate = document.querySelector(
-            `[data-tempalte-name="${name}"]`
+    /**
+     *
+     * @param {string} name name of the template
+     * @returns
+     */
+    getTemplate(name) {
+        const template = document.querySelector(
+            `[data-tempalte-name="${name}-card"]`
         );
 
-        if (!cardTemplate) {
+        if (!template) {
             Core.debugLog(`${name} template not found`);
             return;
         }
+        const documentFragment = template.content.firstElementChild;
+        return documentFragment.cloneNode(true);
+    }
 
-        const documentFragment = cardTemplate.content.firstElementChild;
-        const dom = documentFragment.cloneNode(true);
-        return dom;
+    /**
+     * apearing animation
+     */
+    applyAppearAnimation() {
+        const elements = document.querySelectorAll('[data-animation="apear"]');
+
+        // Initialize elements with 0% opacity
+        elements.forEach((el) => {
+            const delay =
+                parseInt(el.getAttribute("data-animation-delay")) || 0;
+            // Apply delay using a timeout
+            el.style.transitionDelay = `${delay}ms`;
+
+            // Initial styles: invisible and slightly smaller
+            el.style.opacity = 0.05;
+            el.style.transform = "scale(0.9)"; // Slightly smaller
+            el.style.transition =
+                "opacity 1s cubic-bezier(0.6, 0, 0.2, 1), transform 1s cubic-bezier(0.6, 0, 0.2, 1)";
+        });
+
+        function handleScroll() {
+            elements.forEach((el) => {
+                if (!el.dataset.animated && isElementInViewport(el)) {
+                    el.style.opacity = 1;
+                    el.style.transform = "scale(1)"; // Slightly smaller
+                    el.dataset.animated = "true"; // Mark as animated
+                }
+            });
+        }
+
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            const elementHeight = rect.height;
+            const elementWidth = rect.width;
+
+            // Calculate the visible portion
+            const visibleHeight =
+                Math.min(rect.bottom, window.innerHeight) -
+                Math.max(rect.top, 0);
+            const visibleWidth =
+                Math.min(rect.right, window.innerWidth) -
+                Math.max(rect.left, 0);
+
+            // Visible area
+            const visibleArea =
+                Math.max(0, visibleHeight) * Math.max(0, visibleWidth);
+            const totalArea = elementHeight * elementWidth;
+
+            // Return true if at least 30% of the element's area is visible
+            return visibleArea >= totalArea * 0.4;
+        }
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleScroll);
+
+        // Run initially in case elements are already in view
+        handleScroll();
     }
 }

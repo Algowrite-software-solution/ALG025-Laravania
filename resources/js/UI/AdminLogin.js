@@ -86,60 +86,13 @@ export default class AdminLogin extends PageManager {
     async login() {
         const inputs = Core.UIM.getInputs("adminLoginForm", {});
 
-        const response = await Core.RM.post("/api/admin/login", inputs, {
+        const response = await Core.RM.post("/admin/login", inputs, {
             requestType: "json",
             responseType: "json",
             showToast: true,
+            onSuccess: () => {
+                window.location.href = "/admin/";
+            },
         });
-        console.log(response);
-        if (response.token) {
-            Core.debugLog(response.token);
-            Core.LSM.setItem("token", response.token);
-            console.log("Success");
-            try {
-                // const res = await fetch(`/admin/dashboard?token=${response.token}`, {
-                //     method: "GET",
-                //     headers: {
-                //       "Accept": "application/json",
-                //       "Authorization": `Bearer ${response.token}`,
-                //     },
-                // });
-
-                // const res = await Core.RM.get(
-                //     `/admin/web-auth`,
-                //     {},
-                //     {
-                //         requestType: "json",
-                //         responseType: "json",
-                //         showToast: true,
-                //         headers: {
-                //             Accept: "application/json",
-                //             Authorization: `Bearer ${response.token}`,
-                //         },
-                //     }
-                // );
-                try {
-                    const res = await fetch(`/admin/web-auth`, {
-                        method: "GET",
-                        headers: {
-                            Accept: "application/json",
-                            Authorization: `Bearer ${response.token}`,
-                        },
-                        credentials: "include", // Ensure cookies are sent
-                    });
-                    const data = await res.json();
-                    if (data.results.role_id === 1) {
-                        window.location.href = "/admin";
-                    }
-                } catch (error) {
-                    console.error("Error in GET request:", error);
-                }
-                
-            } catch (error) {
-                console.error("Error in GET request:", error);
-            }
-        } else {
-            console.log("Token is missing, unable to proceed");
-        }
     }
 }

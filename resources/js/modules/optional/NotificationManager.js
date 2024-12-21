@@ -26,7 +26,7 @@
  *
  */
 
-import EventManager from "./../core/EventManager";
+import { EventManager } from "./EventManager";
 
 /**
  * reusable notification manager system

@@ -1,6 +1,8 @@
 import Core from "../Core";
 import UIManager from "../modules/core/UIManager";
 import EventListnerManager from "../modules/optional/EventListnerManager";
+import SearchService from "../modules/optional/services/SearchService";
+import URIManager from "../modules/optional/URIManager";
 
 /**
  * @description
@@ -36,7 +38,9 @@ export default class PageManager extends UIManager {
     constructor(id) {
         super();
         this.ELM = new EventListnerManager();
+        this.S = new SearchService();
         this.core = new Core();
+        this.URIManager = new URIManager();
 
         console.log("Page Manager instatiated");
         this.pageId = id;

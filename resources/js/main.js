@@ -1,5 +1,4 @@
 import Core from "./Core";
-import HeaderComponentManager from "./UI/HeaderComponentManager";
 
 setTimeout(() => {
     spinnerPause();
@@ -10,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     spinnerPause();
 
     await fetch("/sanctum/csrf-cookie");
-    const header = new HeaderComponentManager();
+    Core.UIM.applyAppearAnimation();
 });
 
 const spinnerPause = () => {

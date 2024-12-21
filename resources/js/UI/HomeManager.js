@@ -16,7 +16,7 @@ export default class HomeManager extends PageManager {
     }
 
     async init() {
-        Core.toast.show("info", await Core.LSM.getItem("token"));
+        this.primaryCarouselLoader();
     }
 
     setListners() {
@@ -25,5 +25,25 @@ export default class HomeManager extends PageManager {
 
     actions() {
         console.log("actions implemented");
+    }
+
+    /**
+     * @description
+     * load the primary carousel - menu
+     *
+     * @param {Array} dataList - the data list for the carousel
+     */
+    primaryCarouselLoader() {
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 30,
+            initialSlide: 1, // Start from the 2nd slide (index 1)
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+        return swiper;
     }
 }

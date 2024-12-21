@@ -1,27 +1,10 @@
 import Core from "./Core";
-import { DashboardPanel } from "./panels/DashboardPanel";
-import { ViewProductPanel } from "./panels/ViewProductPanel";
-import { AddStockPanel } from "./panels/AddStockPanel";
-import { AddProductPanel } from "./panels/AddProductPanel";
-import { OtherProductPanel } from "./panels/OtherProductPanel";
-import { OfferEditPanel } from "./panels/OfferEditPanel";
-import { OfferEmailPanel } from "./panels/OfferEmailPanel";
-import { ManageUiPanel } from "./panels/ManageUiPanel";
-import { UsersPanel } from "./panels/UsersPanel";
-import { StaffPanel } from "./panels/StaffPanel";
-import { SeoPanel } from "./panels/SeoPanel";
-import { SettingPanel } from "./panels/SettingPanel";
-import { OrderHistoryPanel } from "./panels/OrderHistoryPanel";
-import { JobCardPanel } from "./panels/JobCardPanel";
-import { BillingIssuingPanel } from "./panels/BillingIssuingPanel";
-import { InventoryPanel } from "./panels/InventoryPanel";
-import { InvoicePanel } from "./panels/InvoicePanel";
-import { TestPanel } from "./panels/TestPanel";
-import { ConfirmationModalManager } from "./UI/components/ConfirmationModalManager";
+import TestPanel from "./panels/TestPanel";
+import DashboardPanel from "./panels/DashboardPanel";
 
 /**
  * repesent an instance of admin panel and mange all the features regarding the admin panel
- *
+ * @author Janith Nirmal (Algowrite Solutions)
  * @description
  * **Directly dependant on the following dependancies**
  * - Core
@@ -70,7 +53,7 @@ export default class Admin extends Core {
      * @type {AdminPanelData}
      */
     data = {
-        application_name: "Hasthi Restaurant Admin Dashboard",
+        application_name: "Laravania Admin Dashboard",
         application_version: "1.0.0",
         application_copyright:
             "Made with ❤️ by Algowrite © 2024. All Rights Reserved By Algowrite Solutions",
@@ -98,12 +81,10 @@ export default class Admin extends Core {
         this.info = {
             started_time: new Date(),
             state: "live",
-            activePanelName: "inventory-panel", // default panel
+            activePanelName: "test", // default panel
         };
 
         this.activePanel = null;
-
-        this.#addRegisters();
 
         this.UI = {
             panels: this.#createPanels(),
@@ -130,18 +111,6 @@ export default class Admin extends Core {
         Admin.switchPanel(this.info.activePanelName);
     }
 
-    /** applciation registers */
-    #addRegisters() {
-        this.#modalRegister();
-    }
-
-    /**
-     * register all  modals
-     */
-    #modalRegister() {
-        new ConfirmationModalManager();
-    }
-
     /**
      *
      * @returns {Admin|null} - returns the admin panel object
@@ -158,21 +127,6 @@ export default class Admin extends Core {
     #createPanels() {
         const panels = [
             new DashboardPanel({ name: "dashboard" }),
-            new ViewProductPanel({ name: "tabViewProduct" }),
-            new AddStockPanel({ name: "tabAddStock" }),
-            new AddProductPanel({ name: "tabAddProduct" }),
-            new OtherProductPanel({ name: "tabOtherProduct" }),
-            new OfferEditPanel({ name: "offerTabEdit" }),
-            new OfferEmailPanel({ name: "offerTabEmail" }),
-            new ManageUiPanel({ name: "manage-ui" }),
-            new UsersPanel({ name: "users" }),
-            new StaffPanel({ name: "staff" }),
-            new SeoPanel({ name: "seo" }),
-            new SettingPanel({ name: "settings" }),
-            new OrderHistoryPanel({ name: "orderHistory" }),
-            new JobCardPanel({ name: "job-card-panel" }),
-            new BillingIssuingPanel({ name: "billing-issuing-panel" }),
-            new InventoryPanel({ name: "inventory-panel" }),
             new TestPanel({ name: "test" }),
         ];
 

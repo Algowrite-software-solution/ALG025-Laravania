@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    
+
     <!-- s1 - section 1 -->
     <section class="aup-s1 lrv-bg-secondary-800 py-5 d-flex">
         <div class="container p-0 flex-grow-1 d-flex align-items-center justify-content-center">

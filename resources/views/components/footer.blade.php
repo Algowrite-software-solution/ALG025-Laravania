@@ -1,3 +1,5 @@
-<footer class="lrv-bg-primary-400 py-3">
-    <h2 class="text-center">Common Footer</h2>
+<footer class="lrv-bg-dark py-2 w-100">
+    <div class="container d-flex justify-content-center">
+        <h2 class="text-center lrv-text-primary-100">Footer Section</h2>
+    </div>
 </footer>

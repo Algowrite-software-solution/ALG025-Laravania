@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -13,8 +13,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        //call the factory
-        User::factory()->count(50)->create(); // Creates 10 accessory models with related accessories and brands
+        User::create([
+            "first_name" => "User",
+            "last_name" => "Account",
+            "email" => "user@gmail.com",
+            "mobile" => "0780780788",
+            "password" => Hash::make("0780780788"),
+        ]);
+
+        User::factory()->count(10)->create();
     }
 }

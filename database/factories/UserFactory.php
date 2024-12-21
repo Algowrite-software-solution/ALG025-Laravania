@@ -17,11 +17,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'first_name' => $this->faker->firstName, // Generates a random first name
-            'last_name' => $this->faker->lastName, // Generates a random last name
-            'email' => $this->faker->unique()->safeEmail, // Generates a unique email
-            'mobile' => $this->faker->unique()->phoneNumber, // Generates a random phone number
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'email' => $this->faker->unique()->safeEmail,
+            'mobile' => $this->faker->regexify('[0-9]{10,15}'),
+            'password' => $this->faker->password,
         ];
     }
 }

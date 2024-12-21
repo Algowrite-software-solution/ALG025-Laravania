@@ -1,5 +1,5 @@
-@extends('layout.client-layout') 
-@section('title', 'Home Page')
+@extends('layout.client-layout')
+@section('title', 'Home')
 
 @section('external_css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -18,8 +18,8 @@
 
 @section('content')
 
-    <!-- s1 - Hero Section -->
-    <section class="hp-s1 lrv-bg-secondary-800 py-5 d-flex">
+    <!-- s1 - section 1 -->
+    <section class="aup-s1 lrv-bg-secondary-800 py-5 d-flex">
         <div class="container p-0 flex-grow-1 d-flex align-items-center justify-content-center">
             <h1 class="text-center lrv-text-primary-100">Home Page 🏠</h1>
         </div>

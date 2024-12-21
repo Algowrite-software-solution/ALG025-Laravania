@@ -2,21 +2,31 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Cashier\Billable;
 
 class User extends Model
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
+    use Billable;
 
-    public function jobCards()
-    {
-        return $this->hasMany(JobCard::class);
-    }
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'mobile',
+        'password',
+    ];
 
-    public function address()
+    protected $hidden = [
+        'password',
+    ];
+
+    public function tickets()
     {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(Ticket::class);
     }
 }

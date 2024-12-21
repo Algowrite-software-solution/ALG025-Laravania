@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {{-- add crsf token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }} | @yield('title') </title>
 
-    <link rel="shortcut icon" href="{{ asset('storage/images/branding/favicon-dark-v1.png') }}">
+    <link rel="shortcut icon" href="{{ asset('storage/images/branding/favicon.ico') }}">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,12 +60,12 @@
 
 </head>
 
-<body class="lrv-bg-red-100">
+<body class="lrv-bg-secondary-700">
     {{-- main contnet of the page --}}
     <!-- Spinner Start -->
     <div id="spinner" style="z-index: 5000;"
-        class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
+        class="show w-100 vh-100 lrv-bg-secondary-700 position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+        <div class="spinner-grow lrv-bg-primary-500" role="status"></div>
     </div>
     <!-- Spinner End -->
 

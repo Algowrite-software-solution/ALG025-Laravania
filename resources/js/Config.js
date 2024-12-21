@@ -6,9 +6,10 @@ export default class Config {
     /** @type {Object} */
     static config = {
 
-        project_name: "Blanks Clothing | CEY005 | Under Maintanance 🔧",
+        project_name: "Hasthi Restaurant | ALG023 | Under Maintanance 🔧",
 
-        domain: "http://localhost:8000", // local
+        // domain: "http://localhost:8000", // local
+        domain: "https://hasthi.com.au", // server
 
         main_container_id: "adminPanelMainContainer",
         debug: true, // update this to true to enable debug mode

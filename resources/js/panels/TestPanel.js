@@ -1,27 +1,18 @@
-import Admin from "../Admin";
-import ProductCard from "../UI/components/ProductCard";
-import Core from "../Core";
-import RequestManager from "../modules/core/RequestManager";
-import Panel from "./../Panel";
-import Config from "../Config";
-import { ConfirmationModalManager } from "../UI/components/ConfirmationModalManager";
-import { QuantityModalManager } from "../UI/components/QuantityModalManager";
+import Panel from "../Panel";
 
 /**
  * testing functionalities will be handled here
  */
-export class TestPanel extends Panel {
+export default class TestPanel extends Panel {
     constructor(config) {
         super(config);
     }
 
-    init() {
-        ConfirmationModalManager.show(this.deleteItem);
+    init() {}
+
+    async boot() {
+        this.test();
     }
 
-    async boot() {}
-
-    deleteItem() {
-        Core.toast.show("info", "item DELETED!");
-    }
+    test() {}
 }

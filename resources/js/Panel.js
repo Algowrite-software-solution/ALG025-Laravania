@@ -3,6 +3,16 @@ import Core from "./Core";
 import UIManager from "./modules/core/UIManager";
 import EventListnerManager from "./modules/optional/EventListnerManager";
 
+/**
+ * @author Janith Nirmal (Algowrite Solutions)
+ * 
+ * @description
+ * Parent of Panel Class
+ * @extends UIManager
+ * @version 1.0
+ *  
+
+ */
 export default class Panel extends UIManager {
     #mainContainerId = Core.get_main_container_id();
     #URL_ROOT = Core.get_domain(); //  empty for none that exits
@@ -99,7 +109,7 @@ export default class Panel extends UIManager {
     }
 
     _destroy() {
-        Core.debugLog("panel cleaned")
+        Core.debugLog("panel cleaned");
         this.clean();
     }
 
@@ -180,8 +190,6 @@ export default class Panel extends UIManager {
             }
 
             this.#loadSelectors(container);
-
-            
 
             const action = () => {
                 switch (actionName) {

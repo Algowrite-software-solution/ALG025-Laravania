@@ -167,10 +167,19 @@ export default class RequestManager {
 
         //   auth token
         const token = (await Core.LSM.getItem("token")) ?? "";
+        const csrf_token_element = document.querySelector(
+            'meta[name="csrf-token"]'
+        );
+
+        let csrf_token = "";
+        if (csrf_token_element) {
+            csrf_token = csrf_token_element.getAttribute("content");
+        }
 
         request_options.headers = {
             Accept: "application/json",
             Authorization: `Bearer ${token}`,
+            "X-CSRF-TOKEN": csrf_token,
             ...request_options.headers,
         };
 

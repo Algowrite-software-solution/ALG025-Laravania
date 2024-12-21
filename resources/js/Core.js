@@ -12,10 +12,11 @@ import { AttributeObserver } from "./modules/optional/AttributeObserver";
 import TextManager from "./modules/optional/TextManager";
 import SearchService from "./modules/optional/services/SearchService";
 import DataRouteConfig from "./config/DataRouteConfig";
-import ModalManager from "./modules/core/ModalManager";
 
 /**
  * Core class is a singleton class that is responsible for managing all the plugins and features of the application.
+ *
+ * @author Janith Nirmal (Algowrite Solutions)
  *
  * @description
  * **Directly dependant on the following dependancies**
@@ -50,8 +51,6 @@ export default class Core extends Config {
     static toast = null;
     /** @type {UIManager} */
     static UIM = null;
-    /** @type {ModalManager} */
-    static MM = null;
     //
     //
     //====================================
@@ -107,7 +106,6 @@ export default class Core extends Config {
         LocalStorageManager: {},
         ToastManager: {},
         UIManager: {},
-        ModalManager: {},
     };
 
     static instance = null;
@@ -245,9 +243,6 @@ export default class Core extends Config {
                 break;
             case "UIManager":
                 Core.UIM = new UIManager();
-                break;
-            case "ModalManager":
-                Core.MM = new ModalManager();
                 break;
             default:
                 return false;

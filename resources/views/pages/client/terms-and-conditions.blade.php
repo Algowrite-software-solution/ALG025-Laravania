@@ -2,7 +2,7 @@
 @section('title', 'Terms and conditions Page')
 
 @section('content')
-<section class="container container-fluid">
+<section class="container container-fluid lrv-text-light">
     <h1 class="p-4 lrv-font-cormorant-garamond lrv-fs-2 lrv-fw-bold">Terms and Conditions for hasthi.com</h1>
     <br/>
     <br/>

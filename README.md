@@ -1,13 +1,14 @@
 <div style="text-align: center; padding: 50px; background: black;">
-  <h1 style="font-size: 100px; font-weight: bold; font-family: 'Arial', sans-serif; color: #B03060;">
-    ALG024 - Repair Geek  </h1>
+ <h1 style="font-size: 100px; font-weight: bold; font-family: 'Arial', sans-serif; color: #0066cc;">
+        Laravania
+  </h1>
 </div>
 
-### **version** - 0.1.0
+### **version** - 1.0.0
 
-# Hasthi Restaurant Website Project
+# Laravania Laravel Starter Kit
 
-Restaurant website project for Sri Lankan restaurant located newcastle in Australia. 
+Laravel Based Application framework designed for prebuild featuers and starter point for most web application development with in built features. both frontend and backend have been modified and customized with exclusive features.
 
 ## description
 
@@ -23,7 +24,7 @@ check the **view** folder for more idea about how everything works here...
 
 ================================================
 
-````markdown
+```markdown
 # Laravel Project Setup Guide
 
 Follow these steps to set up and run the Laravel project on your local machine.
@@ -31,11 +32,13 @@ Follow these steps to set up and run the Laravel project on your local machine.
 ## 1. Install Dependencies
 
 Run the following commands to install PHP and Node.js dependencies:
+```
 
 ```bash
 composer install
 npm install
 ```
+
 ````
 
 ## 2. Generate Application Key
@@ -84,21 +87,21 @@ If you need to reset the database, follow these steps:
 
 1. Wipe the database:
 
-    ```bash
+```bash
     php artisan db:wipe
-    ```
+```
 
 2. Re-run the migrations:
 
-    ```bash
+```bash
     php artisan migrate
-    ```
+```
 
 3. Re-seed the database:
 
-    ```bash
+```bash
     php artisan db:seed
-    ```
+```
 
 _OR_
 
@@ -155,3 +158,4 @@ This combines everything into a single `.md` formatted guide for easy reference.
 
 
 ```
+````
