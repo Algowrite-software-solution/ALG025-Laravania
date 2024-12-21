@@ -30,16 +30,16 @@
     --secondary-800: #171717;
     --secondary-900: #1a1a1a;
 
-    --accent-100: #fefb01; /* Creamy hue */
-    --accent-200: #fefb01; /* Lighter hue */
-    --accent-300: #fefb01; /* Lighter hue */
-    --accent-400: #fefb01; /* Attention grabbing primary color */
-    --accent-500: #fefb01;
-    --accent-600: #fefb01; /* Slightly darker hue */
-    --accent-700: #fefb01; /* Darker hue */
-    --accent-800: #fefb01; /* Darker hue */
-    --accent-900: #fefb01; /* Way darker hue */
-    --accent-1000: #fefb01; /* Way darker hue */
+    --accent-100: #ffe6e6; /* Lightest red */
+    --accent-200: #ffcccc; /* Light red */
+    --accent-300: #ffb3b3; /* Soft red */
+    --accent-400: #ff9999; /* Medium light red */
+    --accent-500: #ff8080; /* Primary red */
+    --accent-600: #ff6666; /* Medium dark red */
+    --accent-700: #ff4d4d; /* Dark red */
+    --accent-800: #ff3333; /* Deeper red */
+    --accent-900: #ff1a1a; /* Very dark red */
+    --accent-1000: #ff0000; /* Pure red */
 
     --font-family-primary: "Petrona", sans-serif;
     --font-family-secondary: "Cormorant Garamond", serif;

@@ -16,6 +16,13 @@ this project is under constuction. powered by Algowrite Solutions
 
 [algowrite.com](https://algowrite.com)
 
+## Authors
+[Janith Nirmal](https://github.com/janithnirmal)
+[Madusha Pravinda](https://github.com/MADUSHADEV/)
+[Gayamina De Silva](https://github.com/GAYAMINA/)
+
+
+
 ## test guide
 
 available routes : `php artisan route:list`
