@@ -41,7 +41,7 @@ export default class Filter {
      * @returns
      */
     price(price, format = "LKR") {
-        return `${format} ${price}`;
+        return `${price} ${format}`;
     }
 
     /**
@@ -172,6 +172,26 @@ export default class Filter {
         } else {
             return string;
         }
+    }
+
+    /**
+     *
+     * @param {number} length the length of the text
+     * @returns
+     */
+    maxTextLength(string, length = 100) {
+        return string.length > length
+            ? string.substring(0, length) + "..."
+            : string;
+    }
+
+    /**
+     *
+     * @param {number} value the value to check
+     * @returns
+     */
+    isAvailable(value) {
+        return value > 0 ? "Available" : "Not Available";
     }
 }
 

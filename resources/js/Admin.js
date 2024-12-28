@@ -1,10 +1,14 @@
+import Config from "./Config";
 import Core from "./Core";
-import TestPanel from "./panels/TestPanel";
-import DashboardPanel from "./panels/DashboardPanel";
+import { EventsPanel } from "./panels/EventsPanel";
+import { MenuPanel } from "./panels/MenuPanel";
+import { TicketsPanel } from "./panels/TicketsPanel";
+import { UsersPanel } from "./panels/UsersPanel";
+import { EventEditModalManager } from "./UI/components/EventEditModalManager";
 
 /**
  * repesent an instance of admin panel and mange all the features regarding the admin panel
- * @author Janith Nirmal (Algowrite Solutions)
+ *
  * @description
  * **Directly dependant on the following dependancies**
  * - Core
@@ -53,10 +57,9 @@ export default class Admin extends Core {
      * @type {AdminPanelData}
      */
     data = {
-        application_name: "Laravania Admin Dashboard",
+        application_name: "Hasthi Restaurant Admin Dashboard",
         application_version: "1.0.0",
-        application_copyright:
-            "Made with ❤️ by Algowrite © 2024. All Rights Reserved By Algowrite Solutions",
+        application_copyright: "Made with ❤️ by Algowrite © 2024.",
     };
 
     constructor() {
@@ -81,10 +84,12 @@ export default class Admin extends Core {
         this.info = {
             started_time: new Date(),
             state: "live",
-            activePanelName: "test", // default panel
+            activePanelName: Config.get_default_admin_panel(), // default panel
         };
 
         this.activePanel = null;
+
+        this.#addRegisters();
 
         this.UI = {
             panels: this.#createPanels(),
@@ -99,16 +104,34 @@ export default class Admin extends Core {
      */
     async #boot() {
         // set switch listners
-        document
-            .querySelectorAll("[data-admin-panel-switch]")
-            .forEach((button) => {
-                button.addEventListener("click", () => {
-                    Admin.switchPanel(button.dataset.adminPanelSwitch);
+        const buttonsList = document.querySelectorAll(
+            "[data-admin-panel-switch]"
+        );
+        buttonsList.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                buttonsList.forEach((button) => {
+                    button.classList.remove("active");
                 });
+
+                e.target.classList.add("active");
+                Admin.switchPanel(button.dataset.adminPanelSwitch);
             });
+        });
 
         // load default panel
         Admin.switchPanel(this.info.activePanelName);
+    }
+
+    /** applciation registers */
+    #addRegisters() {
+        this.#modalRegister();
+    }
+
+    /**
+     * register all  modals
+     */
+    #modalRegister() {
+        new EventEditModalManager();
     }
 
     /**
@@ -126,8 +149,10 @@ export default class Admin extends Core {
      */
     #createPanels() {
         const panels = [
-            new DashboardPanel({ name: "dashboard" }),
-            new TestPanel({ name: "test" }),
+            new MenuPanel({ name: "menu" }),
+            new EventsPanel({ name: "events" }),
+            new TicketsPanel({ name: "tickets" }),
+            new UsersPanel({ name: "users" }),
         ];
 
         return panels;
@@ -184,6 +209,11 @@ export default class Admin extends Core {
                 await panel.render();
                 adminPanel.info.activePanelName = name;
                 adminPanel.activePanel = Admin.getPanel(name);
+
+                // active button ui udpate
+                document
+                    .querySelector(`[data-admin-panel-switch="${name}"]`)
+                    .classList.add("active");
             }
         });
     }

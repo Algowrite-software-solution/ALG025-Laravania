@@ -87,10 +87,10 @@ export default class RequestManager {
         responseType: "json",
         ignoreProtocol: false,
         onSuccess: (data) => {
-            console.log(data);
+            // console.log(data);
         },
         onError: (error) => {
-            console.log(error);
+            // console.log(error);
         },
     };
 
@@ -203,8 +203,6 @@ export default class RequestManager {
         // send the request
         let response = null;
         const RM = this;
-
-        console.log(modified_request_options.body);
 
         try {
             response = await fetch(URL, modified_request_options);
@@ -379,8 +377,6 @@ export default class RequestManager {
      * @returns {object} - The handled response.
      */
     #defaultResponseHandler = (data, response_options) => {
-        console.log(response_options);
-
         if (data.status === "success") {
             if (response_options.showToast) {
                 Core.toast.show(

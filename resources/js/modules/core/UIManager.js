@@ -76,17 +76,40 @@ export default class UIManager {
             query = "[data-input-hook]";
             setKey = "data-input-hook";
         } else {
-            query = "select[name], input[name], textarea[name]";
+            query =
+                "select[name], input[name], textarea[name], [data-container]";
             setKey = "name";
         }
 
         const container = document.getElementById(id);
         container.querySelectorAll(query).forEach((input) => {
-            input.value = options.useHook
-                ? this.getNestedValue(data, input.getAttribute(setKey)) ??
-                  (options.usePlaceholder ? this.#defaultPlaceholder : "")
-                : this.getNestedValue(data, input.name) ??
-                  (options.usePlaceholder ? this.#defaultPlaceholder : "");
+            if (input.dataset.ignore !== undefined) return;
+
+            let preparedData = null;
+
+            if (input.dataset.container !== undefined) {
+                preparedData = this.getNestedValue(
+                    data,
+                    input.dataset.container
+                );
+            } else {
+                preparedData = options.useHook
+                    ? this.getNestedValue(data, input.getAttribute(setKey)) ??
+                      (options.usePlaceholder ? this.#defaultPlaceholder : "")
+                    : this.getNestedValue(data, input.name) ??
+                      (options.usePlaceholder ? this.#defaultPlaceholder : "");
+            }
+
+            if (input.dataset.filter !== undefined) {
+                preparedData = new Filter(
+                    preparedData,
+                    input.getAttribute("data-filter") ?? ""
+                ).run();
+                input.innerHTML = preparedData; // add the data to the inner html if container
+                return;
+            }
+
+            input.value = preparedData; // add data if it is an input
         });
     }
 
@@ -268,7 +291,7 @@ export default class UIManager {
      */
     getTemplate(name) {
         const template = document.querySelector(
-            `[data-tempalte-name="${name}-card"]`
+            `[data-tempalte-name="${name}"]`
         );
 
         if (!template) {
@@ -284,6 +307,7 @@ export default class UIManager {
      */
     applyAppearAnimation() {
         const elements = document.querySelectorAll('[data-animation="apear"]');
+        if (elements.length === 0) return;
 
         // Initialize elements with 0% opacity
         elements.forEach((el) => {
@@ -314,21 +338,16 @@ export default class UIManager {
             const elementHeight = rect.height;
             const elementWidth = rect.width;
 
-            // Calculate the visible portion
+            // Calculate the visible portion vertically
             const visibleHeight =
                 Math.min(rect.bottom, window.innerHeight) -
                 Math.max(rect.top, 0);
-            const visibleWidth =
-                Math.min(rect.right, window.innerWidth) -
-                Math.max(rect.left, 0);
 
-            // Visible area
-            const visibleArea =
-                Math.max(0, visibleHeight) * Math.max(0, visibleWidth);
-            const totalArea = elementHeight * elementWidth;
+            // Calculate visibility percentage vertically
+            const visiblePercent = Math.max(0, visibleHeight) / elementHeight;
 
-            // Return true if at least 30% of the element's area is visible
-            return visibleArea >= totalArea * 0.4;
+            // Return true if at least 40% of the element's height is visible
+            return visiblePercent >= 0.4;
         }
 
         window.addEventListener("scroll", handleScroll);
@@ -336,5 +355,25 @@ export default class UIManager {
 
         // Run initially in case elements are already in view
         handleScroll();
+    }
+
+    /**
+     * apear animation for UI components that will be triggered by action
+     * @param {HTMLElement} element - element to apply animation
+     * @param {number} delay - delay in milliseconds
+     */
+    applyAppearAnimationForElement(element, delay = 0) {
+        element.style.opacity = 0;
+        element.style.transform = "scale(0.9)";
+        element.style.transition =
+            "opacity 1s cubic-bezier(0.6, 0, 0.2, 1), transform 1s cubic-bezier(0.6, 0, 0.2, 1)";
+        element.style.transitionDelay = `${delay}s`;
+
+        // Force reflow
+        element.offsetHeight;
+
+        // Trigger animation
+        element.style.opacity = 1;
+        element.style.transform = "scale(1)";
     }
 }
