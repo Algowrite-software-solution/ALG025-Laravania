@@ -471,4 +471,78 @@ export default class ToastManager {
             this.localStorageManager.removeItem("persistedToasts");
         });
     }
+
+    // -------------------------- laoding effect --------------------------
+    /**
+     * Show loading overlay
+     */
+    showLoading() {
+        const overlay = document.createElement("div");
+        overlay.id = "loading-overlay";
+        overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+        const spinner = document.createElement("div");
+        spinner.id = "custom-spinner";
+        spinner.style.cssText = `
+        position: relative;
+        width: 50px;
+        height: 50px;
+    `;
+
+        for (let i = 0; i < 4; i++) {
+            const dot = document.createElement("div");
+            dot.style.cssText = `
+            position: absolute;
+            width: ${6 + i * 2}px;
+            height: ${6 + i * 2}px;
+            background-color: white;
+            border-radius: 50%;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 20px;
+            transform: rotate(${i * 90}deg) translateX(-50%) translateY(-50%);
+            animation-delay: ${i * 0.15}s;
+        `;
+            spinner.appendChild(dot);
+        }
+
+        overlay.appendChild(spinner);
+        document.body.appendChild(overlay);
+
+        const style = document.createElement("style");
+        style.textContent = `
+        @keyframes spin {
+            0% { transform: rotate(0deg) translateX(-50%) translateY(-50%); }
+            100% { transform: rotate(360deg) translateX(-50%) translateY(-50%); }
+        }
+    `;
+        document.head.appendChild(style);
+    }
+
+    /**
+     * Hide loading overlay
+     */
+    hideLoading() {
+        const overlay = document.getElementById("loading-overlay");
+        if (overlay) {
+            overlay.remove();
+        }
+
+        const style = document.head.querySelector("style");
+        if (style) {
+            style.remove();
+        }
+    }
 }
