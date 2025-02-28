@@ -1,9 +1,7 @@
 import Heading from '@/components/heading';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
 import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/react';
+import { Sidebar } from 'lucide-react';
 
 const sidebarNavItems: NavItem[] = [
     {
@@ -26,23 +24,9 @@ export default function TestDefaultLayout({ children }: { children: React.ReactN
             <Heading title="Test" description="Manage the tests for this application" />
 
             <div className="bg-accent flex h-[86vh] flex-col space-y-8 lg:flex-row lg:space-y-0 lg:space-x-12">
-                <aside className="h-full w-full max-w-xl lg:w-48 bg-blue-500">
+                <aside className="h-full w-full max-w-xl bg-blue-500 lg:w-48">
                     <nav className="flex h-full flex-col space-y-1 space-x-0">
-                        {sidebarNavItems.map((item) => (
-                            <Button
-                                key={item.url}
-                                size="sm"
-                                variant="ghost"
-                                asChild
-                                className={cn('w-full justify-start', {
-                                    'bg-muted': currentPath === item.url,
-                                })}
-                            >
-                                <Link href={item.url} prefetch>
-                                    {item.title}
-                                </Link>
-                            </Button>
-                        ))}
+                        <Sidebar />
                     </nav>
                 </aside>
 
